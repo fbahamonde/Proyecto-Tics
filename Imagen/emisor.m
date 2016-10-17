@@ -48,7 +48,7 @@ for i=1:row
   		signal = [signal, sample];
     end
 end
-save('audio.mat','signal');
+%save('audio.mat','signal');
 % espera a una tecla para continuar
 pause
 sound(signal, Fs)
