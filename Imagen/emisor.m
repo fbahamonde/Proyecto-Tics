@@ -28,7 +28,6 @@ signal = [signal, header];
 
 %********* Codificacion de dimension de la imagen *********
 tam_t = 0:1/Fs:tam_dur;
-frecTam = double(sendfreq(row, col, col));
 header = sin(2*pi*(5600+col*5)*tam_t)+ sin(2*pi*(2000+row*5)*tam_t);
 g=length(header);
 ff=fft(header);
