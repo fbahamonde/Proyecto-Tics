@@ -23,12 +23,12 @@ signal = []; % mensaje total a enviar
 %********* HEADER *********
 	% Secuencia de 5k, 6k, y 7k 
 head_t = 0:1/Fs:head_dur; 
-header = [sin(2*pi*5000*head_t), sin(2*pi*6000*head_t), sin(2*pi*7000*head_t)];
+header = [sin(2*pi*f1g*head_t), sin(2*pi*f2g*head_t), sin(2*pi*f3g*head_t)];
 signal = [signal, header];
 
 %********* Codificacion de dimension de la imagen *********
 tam_t = 0:1/Fs:tam_dur;
-header = sin(2*pi*(5600+col*5)*tam_t)+ sin(2*pi*(2000+row*5)*tam_t);
+header = sin(2*pi*(ftg1+col*5)*tam_t)+ sin(2*pi*(ftg2+row*5)*tam_t);
 g=length(header);
 ff=fft(header);
 Z1 = ff(1:(g/2)+1);
@@ -40,16 +40,16 @@ signal = [signal, header];
 pix_t = 0:1/Fs:pix_dur;
 for i=1:row
    	for j=1:col
-        pix=[img(i,j,1) img(i,j,2) img(i,j,3)];
+        pix=[img(i,j,2)];
         pix = double(pix);
-		frecP = [p2f(pix(1),RbaseF,dF), p2f(pix(2),GbaseF,dF), p2f(pix(3),BbaseF,dF)];
-		sample = sin(2 * pi * frecP.' * pix_t);
-		sample = sum(sample);
+		frecP = [p2f(pix,GbaseF,dF)];
+		sample = sin(2 * pi * frecP* pix_t);
+		%sample = sum(sample);
   		signal = [signal, sample];
     end
 end
-%save('audio.mat','signal');
-% espera a una tecla para continuar
+%save('audiog.mat','signal');
+disp('presiona a una tecla para continuar')
 pause
 sound(signal, Fs)
 %wavwrite(signal,Fs,'audio.wav')

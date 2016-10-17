@@ -11,7 +11,7 @@ recibe el sonido y decodifica la imagen
 %}
 % ********* Grabacion *********
 fs = 40 * 10^3;  % sample rate
-disp('Receiving signal')
+disp('Recibiendo Señal')
 t_f = 95; % duracion de la grabacion (segs)
 recobj = audiorecorder(fs, 16, 1); 
 recordblocking(recobj, t_f);
