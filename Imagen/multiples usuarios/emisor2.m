@@ -49,8 +49,8 @@ for i=1:row
     end
 end
 %save('audiog.mat','signal');
-disp('presiona a una tecla para continuar')
+% disp('presiona a una tecla para continuar')
 pause
 sound(signal, Fs)
-%wavwrite(signal,Fs,'audio.wav')
+%wavwrite(signal,Fs,'audio2.wav')
 

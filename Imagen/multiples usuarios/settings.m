@@ -22,10 +22,10 @@ f1b=8000;
 f2b=9000;
 f3b=10000;
 %frecuencias para el tamaño
-ftr1=5600;
-ftr2=2000;
+ftr1=14000;
+ftr2=14500;
 ftg1=12000;
 ftg2=12500;
 ftb1=13000;
 ftb2=13500;
-foto='cara.jpg';
+foto='angel.png';

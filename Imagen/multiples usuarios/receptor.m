@@ -15,11 +15,11 @@ recibe el sonido y decodifica la imagen
                         disp('Recibiendo señal')
                         disp('Duración Grabación : 95 seg.')
                         
-                        % t_f = 95; % duracion de la grabacion (segs)
-                        % recobj = audiorecorder(fs, 16, 1);
-                        % recordblocking(recobj, t_f);
-                        % signal = recobj.getaudiodata;
-                        load('audior.mat');  % prueba canal perfecto
+                        t_f = 100; % duracion de la grabacion (segs)
+                        recobj = audiorecorder(fs, 16, 1);
+                        recordblocking(recobj, t_f);
+                        signal = recobj.getaudiodata;
+%                         load('audior.mat');  % prueba canal perfecto
                         settings;
                         % carga al workspace:
                         % head_dur
@@ -52,19 +52,19 @@ Z1(2:end-1) = 2*Z1(2:end-1);
 Z1 = abs(Z1);
 Z12 = abs(Z1);
 efe = fs*(0:(L/2))/L;
-index = (10000 > efe) & (efe >= 5600); % indices filtrado
+index = (14400 > efe) & (efe >= 14000); % indices filtrado
 efe = efe(index);
 Z1 = Z1(index); % filtrado ;)
 [~,f_i] = max(Z1);
 efe(f_i);  % encuentra el tono
 efe2 = fs*(0:(L/2))/L;
-index2 = (3000> efe2) & (efe2 > 2000); % indices filtrado
+index2 = (15000> efe2) & (efe2 > 14500); % indices filtrado
 efe2 = efe2(index2);
 Z12 = Z12(index2); % filtrado ;)
 [~,f_i2] = max(Z12);
 efe2(f_i2);  % encuentra el tono
-col = round((efe(f_i)-5600)/5);
-fil = round((efe2(f_i2)-2000)/5);
+col = round((efe(f_i)-14000)/5)
+fil = round((efe2(f_i2)-14500)/5)
 %hasta aqui funcionando
 
 % ********* Mensaje *********
@@ -92,7 +92,7 @@ for i = 1:(col*fil)
         red(i) = f2p(Rf_val(indr),RbaseF, dF); % guarda el valor r del pixel
 end
 red8 = uint8(reshape(red, col, fil)); % Matriz con valores de rojo
- load('audiog.mat');  % prueba canal perfecto
+%load('audiog.mat');  % prueba canal perfecto
  
 %%
                                     %Matriz Green
@@ -130,8 +130,8 @@ Z12 = Z12(index2); % filtrado ;)
 [~,f_i2] = max(Z12);
 efe2(f_i2);  % encuentra el tono
 
-col = round((efe(f_i)-12000)/5);
-fil = round((efe2(f_i2)-12500)/5);
+col = round((efe(f_i)-12000)/5)
+fil = round((efe2(f_i2)-12500)/5)
 %hasta aqui funcionando
 
 % ********* Mensaje *********
@@ -161,7 +161,7 @@ for i = 1:(col*fil)
 end
 green8 = uint8(reshape(green, col, fil)); % Matriz con valores de verde
 
- load('audiob.mat');  % prueba canal perfecto
+% load('audiob.mat');  % prueba canal perfecto
 %%
                                         %Matriz Blue
 % ********* Header *********
@@ -198,8 +198,8 @@ Z12 = Z12(index2); % filtrado ;)
 [~,f_i2] = max(Z12);
 efe2(f_i2);  % encuentra el tono
 
-col = round((efe(f_i)-13000)/5);
-fil = round((efe2(f_i2)-13500)/5);
+col = round((efe(f_i)-13000)/5)
+fil = round((efe2(f_i2)-13500)/5)
 %hasta aqui funcionando
 
 % ********* Mensaje *********

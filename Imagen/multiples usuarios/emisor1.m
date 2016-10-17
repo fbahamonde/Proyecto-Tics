@@ -53,7 +53,7 @@ for i=1:row
 end
 %save('audior.mat','signal');
 disp('presiona a una tecla para continuar')
-pause
-sound(signal, Fs)
+ pause
+ sound(signal, Fs)
 %wavwrite(signal,Fs,'audio.wav')
 

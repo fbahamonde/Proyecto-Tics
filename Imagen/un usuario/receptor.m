@@ -105,13 +105,13 @@ green8 = uint8(reshape(green, tam, tam2)); % Matriz con valores de verde
 blue8 = uint8(reshape(blue, tam, tam2)); % Matriz con valores de azul
 
 imgrec = cat(3,red8',green8',blue8'); % Imagen reconstruida
-true_img = imread(foto);
-subplot(2,1,1)
-imshow(imgrec);
-xlabel('Recibida')
-subplot(2,1,2)
-imshow(true_img);
-xlabel('Original')
-
+% true_img = imread(foto);
+% subplot(2,1,1)
+% imshow(imgrec);
+% xlabel('Recibida')
+% subplot(2,1,2)
+% imshow(true_img);
+% xlabel('Original')
+imshow(imgrec)
 
 
