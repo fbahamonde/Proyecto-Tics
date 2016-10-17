@@ -51,7 +51,7 @@ for i=1:row
 end
 save('audio.mat','signal');
 % espera a una tecla para continuar
-%pause
-%sound(signal, Fs)
-wavwrite(signal,Fs,'audio.wav')
+pause
+sound(signal, Fs)
+%wavwrite(signal,Fs,'audio.wav')
 

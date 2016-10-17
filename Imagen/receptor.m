@@ -11,11 +11,12 @@ recibe el sonido y decodifica la imagen
 %}
 % ********* Grabacion *********
 fs = 40 * 10^3;  % sample rate
+disp('Receiving signal')
 t_f = 95; % duracion de la grabacion (segs)
-%recobj = audiorecorder(fs, 16, 1); 
-%recordblocking(recobj, t_f);
-%signal = recobj.getaudiodata;
-  load('audio.mat');  % prueba canal perfecto
+recobj = audiorecorder(fs, 16, 1); 
+recordblocking(recobj, t_f);
+signal = recobj.getaudiodata;
+% load('audio.mat');  % prueba canal perfecto
 settings;
 % carga al workspace:
     % head_dur
@@ -78,11 +79,11 @@ Rf_val = f_val(indexR);
 Gf_val = f_val(indexG);
 Bf_val = f_val(indexB);
 
-message = signal(init_time:end); %corregir eso
+message = signal(init_time:end);
 for i = 1:(tam*tam2)
         sample = message((i-1)*pix_wid+1:i*pix_wid);
         win = hamming(pix_wid);
-        sample = sample'.*win;
+        sample = sample.*win;
         Y = fft(sample); % saca fft por columnas
         Y1 = Y(1:round(pix_wid/2) + 1);        
         Y1 = abs(Y1);
