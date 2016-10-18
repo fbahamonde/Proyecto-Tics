@@ -34,7 +34,7 @@ recibe el sonido y decodifica la imagen
                         
 % ********* Header *********
 head_t = 0:1/fs:head_dur; 
-true_head = [sin(2*pi*5000*head_t), sin(2*pi*6000*head_t), sin(2*pi*7000*head_t)];
+true_head = [sin(2*pi*f1r*head_t), sin(2*pi*f2r*head_t), sin(2*pi*f3r*head_t)];
 test_dur = 4; % segs
 test_head = signal(1:test_dur*fs); % header a detectar (4 segundos de ventana)
 % 'acor' contiene la correlacion para cada desplazamiento de 'lag'
@@ -52,19 +52,19 @@ Z1(2:end-1) = 2*Z1(2:end-1);
 Z1 = abs(Z1);
 Z12 = abs(Z1);
 efe = fs*(0:(L/2))/L;
-index = (14400 > efe) & (efe >= 14000); % indices filtrado
+index = (ftr1+400 > efe) & (efe >= ftr1); % indices filtrado
 efe = efe(index);
 Z1 = Z1(index); % filtrado ;)
 [~,f_i] = max(Z1);
 efe(f_i);  % encuentra el tono
 efe2 = fs*(0:(L/2))/L;
-index2 = (15000> efe2) & (efe2 > 14500); % indices filtrado
+index2 = (ftr2+400> efe2) & (efe2 > ftr2); % indices filtrado
 efe2 = efe2(index2);
 Z12 = Z12(index2); % filtrado ;)
 [~,f_i2] = max(Z12);
 efe2(f_i2);  % encuentra el tono
-col = round((efe(f_i)-14000)/5)
-fil = round((efe2(f_i2)-14500)/5)
+col = round((efe(f_i)-ftr1)/5)
+fil = round((efe2(f_i2)-ftr2)/5)
 %hasta aqui funcionando
 
 % ********* Mensaje *********
@@ -98,7 +98,7 @@ red8 = uint8(reshape(red, col, fil)); % Matriz con valores de rojo
                                     %Matriz Green
 % ********* Header *********
 head_t = 0:1/fs:head_dur; 
-true_head = [sin(2*pi*2000*head_t), sin(2*pi*3000*head_t), sin(2*pi*4000*head_t)];
+true_head = [sin(2*pi*f1g*head_t), sin(2*pi*f2g*head_t), sin(2*pi*f3g*head_t)];
 test_dur = 4; % segs
 test_head = signal(1:test_dur*fs); % header a detectar (4 segundos de ventana)
 % 'acor' contiene la correlacion para cada desplazamiento de 'lag'
@@ -117,21 +117,21 @@ Z1(2:end-1) = 2*Z1(2:end-1);
 Z1 = abs(Z1);
 Z12 = abs(Z1);
 efe = fs*(0:(L/2))/L;
-index = (12400 > efe) & (efe > 12000); % indices filtrado
+index = (ftg1+400 > efe) & (efe > ftg1); % indices filtrado
 efe = efe(index);
 Z1 = Z1(index); % filtrado ;)
 [~,f_i] = max(Z1);
 efe(f_i);  % encuentra el tono
 
 efe2 = fs*(0:(L/2))/L;
-index2 = (13000> efe2) & (efe2 > 12500); % indices filtrado
+index2 = (ftg2+400> efe2) & (efe2 > ftg2); % indices filtrado
 efe2 = efe2(index2);
 Z12 = Z12(index2); % filtrado ;)
 [~,f_i2] = max(Z12);
 efe2(f_i2);  % encuentra el tono
 
-col = round((efe(f_i)-12000)/5)
-fil = round((efe2(f_i2)-12500)/5)
+col = round((efe(f_i)-ftg1)/5)
+fil = round((efe2(f_i2)-ftg2)/5)
 %hasta aqui funcionando
 
 % ********* Mensaje *********
@@ -166,7 +166,7 @@ green8 = uint8(reshape(green, col, fil)); % Matriz con valores de verde
                                         %Matriz Blue
 % ********* Header *********
 head_t = 0:1/fs:head_dur; 
-true_head = [sin(2*pi*8000*head_t), sin(2*pi*9000*head_t), sin(2*pi*10000*head_t)];
+true_head = [sin(2*pi*f1b*head_t), sin(2*pi*f2b*head_t), sin(2*pi*f3b*head_t)];
 test_dur = 4; % segs
 test_head = signal(1:test_dur*fs); % header a detectar (4 segundos de ventana)
 % 'acor' contiene la correlacion para cada desplazamiento de 'lag'
@@ -185,21 +185,21 @@ Z1(2:end-1) = 2*Z1(2:end-1);
 Z1 = abs(Z1);
 Z12 = abs(Z1);
 efe = fs*(0:(L/2))/L;
-index = (134000 > efe) & (efe > 13000); % indices filtrado
+index = (ftb1+400 > efe) & (efe > ftb1); % indices filtrado
 efe = efe(index);
 Z1 = Z1(index); % filtrado ;)
 [~,f_i] = max(Z1);
 efe(f_i);  % encuentra el tono
 
 efe2 = fs*(0:(L/2))/L;
-index2 = (14000> efe2) & (efe2 > 13500); % indices filtrado
+index2 = (ftb2+400> efe2) & (efe2 > ftb2); % indices filtrado
 efe2 = efe2(index2);
 Z12 = Z12(index2); % filtrado ;)
 [~,f_i2] = max(Z12);
 efe2(f_i2);  % encuentra el tono
 
-col = round((efe(f_i)-13000)/5)
-fil = round((efe2(f_i2)-13500)/5)
+col = round((efe(f_i)-fbt1)/5)
+fil = round((efe2(f_i2)-fbt2)/5)
 %hasta aqui funcionando
 
 % ********* Mensaje *********
