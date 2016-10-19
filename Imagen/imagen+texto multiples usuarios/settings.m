@@ -1,3 +1,5 @@
+% duracion de la grabacion (segs)
+t_f = 100; 
 % duracion (tiempo) de cada tono del header
 head_dur = 0.6; 
 % duracion (tiempo) donde esta el dimension de la imagen
@@ -5,7 +7,7 @@ tam_dur = 0.3;
 % duracion (tiempo) de ventana donde esta el pixel
 pix_dur = 0.35; % segs 
 % funciones para pasar de frecuencia al valor del pixel 
-RbaseF = 2000;
+RbaseF = 3000;
 GbaseF = 6000;
 BbaseF = 10000;
 dF = 10; % diferencia entre cada valor del pixel
@@ -32,7 +34,7 @@ foto='angel.png';
 
 %% Frecuencias para emitir texto
 freq1=2000;
-freq2=3000;
+freq2=2500;
 f1r=5000/2;%5000
 f2r=3500; %6k
 f3r=4500; %7k

@@ -52,5 +52,4 @@ end
 % disp('presiona a una tecla para continuar')
 pause
 sound(signal, Fs)
-%wavwrite(signal,Fs,'audio2.wav')
 
